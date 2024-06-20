@@ -9,6 +9,7 @@ import { UserService } from 'src/user/user.service';
 import { AuthDto } from './dto/auth.dto';
 import { verify } from 'argon2';
 import { Response } from 'express';
+import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
 export class AuthService {
@@ -17,7 +18,8 @@ export class AuthService {
 
   constructor(
     private jwt: JwtService,
-    private userService: UserService
+    private userService: UserService,
+    private prisma: PrismaService
   ) {}
 
   async login(dto: AuthDto) {
